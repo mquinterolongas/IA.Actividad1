@@ -30,15 +30,15 @@ Al finalizar la actividad, los estudiantes deberán ser capaces de:
 
 ## 1. Nombre del Space
 
-**Nombre:**
+**Nombre:** Omni image editor
 
-**Enlace:**
+**Enlace:** **https://huggingface.co/spaces/selfit-camera/Omni-Image-Editor**
 
 ------------------------------------------------------------------------
 
 ## 2. ¿Qué hace el agente?
 
-Describa en dos o tres líneas cuál es la función del sistema.
+Modifica las imagenes cargadas segun las intrucciones escritas, generando nuevas imagenes o videos
 
 ------------------------------------------------------------------------
 
@@ -47,9 +47,13 @@ Describa en dos o tres líneas cuál es la función del sistema.
   Elemento          Respuesta
   ----------------- ----------------------------------------------------
   **Performance**   ¿Qué significa que el agente haga bien su trabajo?
+                      Realize de forma correcta los cambios y propuestas sugeridas por el usuario generando de forma correcta la imagen o video propuesto usando                         la imagen cargada
   **Environment**   ¿Con qué interactúa el agente?
+                    interactua virtualmente con el usuario y la imagen cargada
   **Actuators**     ¿Qué acciones produce?
+                    crea una imagen o video segun las condiciones del usauario y la imagen proporcionada
   **Sensors**       ¿Qué información recibe como entrada?
+                      Recibe una imagen y un prompt
 
 ------------------------------------------------------------------------
 
@@ -59,27 +63,21 @@ Complete la siguiente tabla y justifique brevemente cada respuesta.
 
   Propiedad      Clasificación     Justificación
   -------------- ----------------- ---------------
-  Observable     Total / Parcial   
-  Determinista   Sí / No           
-  Episódico      Sí / No           
-  Estático       Sí / No           
-  Discreto       Sí / No           
-  Conocido       Sí / No           
+  Observable     Total               el agente tiene acceso total a la informacion proporcionada y al entorno
+  Determinista   No                   Los modelos generativos utilizados para editar imágenes incluyen procesos probabilísticos, por lo cual no genera siempre las                                       mismas repuestas
+  Episódico      No           no se mueve ni cambia con los prcesos anteriores
+  Estático       Sí           no se ve afectado por escritos anteriores
+  Discreto       No           como son imagenes y videos credos se representa mediante valores continuos
+  Conocido       Sí           
 
 ------------------------------------------------------------------------
 
 ## 5. ¿Qué tipo de programa de agente creen que es?
 
 Seleccione la opción que consideren más adecuada y explique por qué.
-
--   Agente de reflejo simple
--   Agente basado en modelo
--   Agente basado en objetivos
--   Agente basado en utilidad
--   Agente con aprendizaje
-
-> **Importante:** No existe una única respuesta correcta. Lo importante
-> es justificar la elección a partir del comportamiento observado.
+-   Agente basado en objetivos: se base en cumplir el prompt realizado por el usuario
+  
+-   Agente con aprendizaje: ya que de lo escrito y quejas realiza mejores resultados, aunque me entra la duda que no usa resultados de prompt anteriores
 
 ------------------------------------------------------------------------
 
@@ -87,11 +85,11 @@ Seleccione la opción que consideren más adecuada y explique por qué.
 
 Después de las presentaciones, discutiremos preguntas como:
 
--   ¿Dos Spaces diferentes pueden compartir el mismo tipo de entorno?
+-   ¿Dos Spaces diferentes pueden compartir el mismo tipo de entorno? si
 -   ¿Es posible saber con certeza qué tipo de agente implementa un Space
-    únicamente observándolo?
+    únicamente observándolo? no
 -   ¿Qué diferencia existe entre el comportamiento observable de un
-    agente y su implementación interna?
+    agente y su implementación interna? los recursos o informacion adicional que use el agente
 
 ------------------------------------------------------------------------
 
@@ -99,10 +97,14 @@ Después de las presentaciones, discutiremos preguntas como:
 
 Encuentre un Space que pueda clasificarse como:
 
-1.  **Totalmente observable, determinista y episódico.**
-2.  **Parcialmente observable, estocástico y secuencial.**
+1.  **Totalmente observable, determinista y episódico.**: MNIST Digit Classifier                                                                                   Totalmente observable: la imagen completa del dígito es visible para el agente.
+Determinista: para una misma imagen y un mismo modelo, el resultado siempre es el mismo.
+Episódico: cada clasificación de una imagen es independiente de las anteriores; no existe memoria entre episodios.
+2.  **Parcialmente observable, estocástico y secuencial.**: Text Adventure (LLM Game)
+Parcialmente observable: el agente solo conoce la descripción textual del estado actual, no el estado completo del mundo.
+Estocástico: las respuestas del modelo de lenguaje pueden variar incluso ante la misma acción, introduciendo incertidumbre.
+Secuencial: cada decisión afecta el estado futuro del juego y las opciones disponibles.
 
-Justifique su respuesta.
 
 ------------------------------------------------------------------------
 
